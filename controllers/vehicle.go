@@ -2,16 +2,19 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 
-	"github.com/edgarduran/Go-Dispatch-Bootcamp/models"
+	"github.com/edgarduran/Go-Dispatch-Bootcamp/usecase"
 )
 
 func GetAllVehicles(w http.ResponseWriter, rtr *http.Request) {
-	// TODO: replace with csv data
-	vehicles := []models.Vehicle{
-		{Id: 1, Make: "ford", Model: "mustang"},
-		{Id: 2, Make: "kia", Model: "sorento"},
+	vehicles, err := usecase.GetAllVehicles()
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		fmt.Fprintf(w, "error getting all vehicles: %v\n", err)
+
+		return
 	}
 
 	jsonData, err := json.Marshal(vehicles)
