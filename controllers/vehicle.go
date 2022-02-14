@@ -8,7 +8,14 @@ import (
 	"github.com/edgarduran/Go-Dispatch-Bootcamp/usecase"
 )
 
-func GetAllVehicles(w http.ResponseWriter, rtr *http.Request) {
+type vehicleController struct {
+}
+
+func New() vehicleController {
+	return vehicleController{}
+}
+
+func (c vehicleController) GetAllVehicles(w http.ResponseWriter, rtr *http.Request) {
 	vehicles, err := usecase.GetAllVehicles()
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
