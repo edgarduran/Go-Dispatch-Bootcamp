@@ -42,3 +42,7 @@ func GetAllVehicles() ([]models.Vehicle, error) {
 
 	return vehicleList, nil
 }
+
+func GetVehicleById(id int) ([]models.Vehicle, error) {
+	return nil, nil
+}
