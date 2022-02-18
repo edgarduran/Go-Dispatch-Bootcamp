@@ -13,3 +13,12 @@ func GetAllVehicles() ([]models.Vehicle, error) {
 
 	return vehicles, nil
 }
+
+func GetVehicleById(id int) ([]models.Vehicle, error) {
+	vehicle, err := service.GetVehicleById(id)
+	if err != nil {
+		return nil, err
+	}
+
+	return vehicle, nil
+}
